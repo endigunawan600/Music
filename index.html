@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kucay Cloud - Stream Your Favorite Music</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Kucay Cloud - Discover & Stream</title>
   <style>
     * {
       box-sizing: border-box;
@@ -25,7 +24,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 30px;
+      padding: 15px 40px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -35,7 +34,7 @@
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 30px;
     }
 
     .logo {
@@ -43,31 +42,20 @@
       align-items: center;
       gap: 8px;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 15px;
       color: #fff;
+      letter-spacing: 1px;
     }
 
     .nav-links a {
       color: #999;
       text-decoration: none;
       font-size: 14px;
-      margin-right: 15px;
+      margin-right: 20px;
     }
 
     .nav-links a.active, .nav-links a:hover {
       color: #fff;
-      border-bottom: 2px solid #fff;
-      padding-bottom: 5px;
-    }
-
-    .search-box input {
-      background-color: #222;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 15px;
-      width: 320px;
-      color: #fff;
-      font-size: 13px;
     }
 
     .nav-right {
@@ -79,151 +67,204 @@
     .btn-secondary {
       background: transparent;
       color: #fff;
-      border: 1px solid #444;
-      padding: 6px 12px;
-      border-radius: 3px;
+      border: 1px solid #555;
+      padding: 6px 14px;
+      border-radius: 4px;
       cursor: pointer;
       font-size: 13px;
+      font-weight: 600;
     }
 
     .btn-primary {
-      background-color: #ffffff;
-      color: #000000;
+      background-color: #ff5500;
+      color: #ffffff;
       border: none;
-      padding: 6px 12px;
-      border-radius: 3px;
-      font-weight: bold;
+      padding: 7px 14px;
+      border-radius: 4px;
+      font-weight: 600;
       cursor: pointer;
       font-size: 13px;
     }
 
-    .upload-link {
-      color: #ccc;
-      text-decoration: none;
-      font-size: 13px;
+    /* HERO BANNER UTAMA ALA SOUNDCLOUD */
+    .hero-container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
 
-    /* HERO BANNER (TAMPILAN UTAMA) */
-    .hero-section {
-      background: linear-gradient(135deg, #1e1e1e 0%, #0a0a0a 100%);
-      border-radius: 12px;
-      padding: 40px 30px;
-      margin-bottom: 30px;
+    .hero-banner {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://i1.sndcdn.com/artworks-CaPxXgHOW9m3mMo0-tysnog-original.png') center/cover no-repeat;
+      border-radius: 8px;
+      height: 380px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid #222;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 60px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     }
 
-    .hero-text {
+    .hero-banner h1 {
+      font-size: 42px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 15px;
       max-width: 600px;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
     }
 
-    .hero-text h1 {
-      font-size: 32px;
-      margin-bottom: 12px;
-      background: linear-gradient(45deg, #ff5500, #ff8800);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .hero-banner p {
+      font-size: 16px;
+      color: #ddd;
+      max-width: 550px;
+      margin-bottom: 25px;
+      line-height: 1.4;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
     }
 
-    .hero-text p {
-      color: #aaa;
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-
-    .hero-cta {
+    .hero-buttons {
       display: flex;
-      gap: 12px;
+      gap: 15px;
     }
 
-    .btn-orange {
+    .btn-orange-big {
       background-color: #ff5500;
       color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
+      padding: 12px 24px;
+      border-radius: 4px;
       font-weight: bold;
+      font-size: 14px;
       cursor: pointer;
       transition: background 0.2s;
     }
 
-    .btn-orange:hover {
+    .btn-orange-big:hover {
       background-color: #e04b00;
     }
 
-    /* GENRE TAGS / QUICK CATEGORIES */
-    .genres-section {
-      margin-bottom: 30px;
+    .btn-dark-big {
+      background-color: rgba(0,0,0,0.6);
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
     }
 
-    .genres-grid {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding-bottom: 5px;
+    /* SECTION TENGAH (PENCARIAN & TOMBOL KE LAGU) */
+    .discovery-section {
+      text-align: center;
+      padding: 50px 20px 30px 20px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .genre-chip {
+    .search-big-box {
+      margin-bottom: 20px;
+    }
+
+    .search-big-box input {
       background-color: #222;
       border: 1px solid #333;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 13px;
-      color: #ccc;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s;
+      border-radius: 30px;
+      padding: 14px 25px;
+      width: 100%;
+      max-width: 600px;
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
-    .genre-chip:hover {
-      background-color: #ff5500;
-      color: #fff;
+    .search-big-box input:focus {
       border-color: #ff5500;
     }
 
-    /* LAYOUT UTAMA KONTEN MUSIK */
+    .divider-or {
+      color: #777;
+      margin: 15px 0;
+      font-size: 14px;
+    }
+
+    .btn-white-pill {
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    .btn-white-pill:hover {
+      transform: scale(1.03);
+    }
+
+    .trending-title-area {
+      margin-top: 40px;
+    }
+
+    .trending-title-area h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    /* LAYOUT UTAMA KONTEN LAGU */
     .main-container {
-      max-width: 1240px;
+      max-width: 1200px;
       margin: 20px auto;
       padding: 0 20px;
     }
 
     .music-section {
-      margin-bottom: 35px;
+      margin-top: 20px;
+      margin-bottom: 50px;
+      border-top: 1px solid #222;
+      padding-top: 30px;
     }
 
     .music-section h2 {
-      font-size: 20px;
+      font-size: 24px;
       color: #fff;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     /* GRID LAGU / CARD */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 20px;
     }
 
     .card {
       cursor: pointer;
+      background: #181818;
+      padding: 12px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .card:hover {
+      background: #222;
     }
 
     .card-cover {
       width: 100%;
       aspect-ratio: 1/1;
       border-radius: 6px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       background-color: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-      transition: transform 0.2s;
       overflow: hidden;
       position: relative;
     }
@@ -234,23 +275,14 @@
       object-fit: cover;
     }
 
-    .card:hover .card-cover {
-      transform: translateY(-4px);
-    }
-
-    .play-icon {
-      font-size: 28px;
-      color: #fff;
-      opacity: 0.8;
-    }
-
     .card .title {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: bold;
       color: #fff;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      margin-bottom: 4px;
     }
 
     .card .subtitle {
@@ -374,7 +406,7 @@
   <header class="navbar">
     <div class="nav-left">
       <div class="logo">
-        <svg height="22" viewBox="0 0 48 24" fill="#ff5500"><path d="M12 18h31c2.8 0 5-2.2 5-5s-2.2-5-5-5c-.2 0-.4 0-.6.1C41.6 5 38.6 3 35 3c-4.4 0-8 3.6-8 8 0 .3 0 .7.1 1M0 18h2v-6H0v6zm4 0h2V9H4v9zm4 0h2V7H8v11zm4 0h2V6h-2v12z"/></svg>
+        <svg height="20" viewBox="0 0 48 24" fill="#ff5500"><path d="M12 18h31c2.8 0 5-2.2 5-5s-2.2-5-5-5c-.2 0-.4 0-.6.1C41.6 5 38.6 3 35 3c-4.4 0-8 3.6-8 8 0 .3 0 .7.1 1M0 18h2v-6H0v6zm4 0h2V9H4v9zm4 0h2V7H8v11zm4 0h2V6h-2v12z"/></svg>
         <span>KUCAYCLOUD</span>
       </div>
       <nav class="nav-links">
@@ -384,109 +416,109 @@
       </nav>
     </div>
 
-    <div class="search-box">
-      <input type="text" placeholder="Search for artists, bands, tracks, podcasts">
-    </div>
-
     <div class="nav-right">
       <button class="btn-secondary">Sign in</button>
       <button class="btn-primary">Create account</button>
-      <a href="#" class="upload-link">Upload</a>
     </div>
   </header>
 
-  <!-- KONTEN UTAMA -->
+  <!-- 1. TAMPILAN UTAMA (HERO BANNER) -->
+  <div class="hero-container">
+    <div class="hero-banner">
+      <h1>Every scene lives here.</h1>
+      <p>Temukan musik terlengkap, trek rahasia, remix, dan set DJ eksklusif langsung dari kreator favoritmu.</p>
+      <div class="hero-buttons">
+        <button class="btn-orange-big" onclick="document.getElementById('music-section').scrollIntoView({ behavior: 'smooth' });">Mulai Mendengarkan</button>
+        <button class="btn-dark-big">Upload Lagumu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. BAGIAN PENCARIAN & TOMBOL MENU KE BAGIAN LAGU -->
+  <div class="discovery-section">
+    <div class="search-big-box">
+      <input type="text" placeholder="Search for artists, bands, tracks, podcasts">
+    </div>
+    
+    <div class="divider-or">or</div>
+    
+    <button class="btn-white-pill" onclick="document.getElementById('music-section').scrollIntoView({ behavior: 'smooth' });">
+      Upload your own
+    </button>
+
+    <div class="trending-title-area">
+      <h3>Hear what's trending</h3>
+      <button class="btn-white-pill" style="font-size: 13px; padding: 10px 22px;" onclick="document.getElementById('music-section').scrollIntoView({ behavior: 'smooth' });">
+        Explore trending playlists
+      </button>
+    </div>
+  </div>
+
+  <!-- 3. BAGIAN DAFTAR MUSIK -->
   <div class="main-container">
-    <main class="content-area">
-
-      <!-- 1. HERO BANNER (TAMPILAN UTAMA SEBELUM MUSIK) -->
-      <section class="hero-section">
-        <div class="hero-text">
-          <h1>Connect on KucayCloud</h1>
-          <p>Dengarkan lagu favoritmu, temukan remix trending terbaru, dan nikmati streaming audio berkualitas kapan saja tanpa batas.</p>
-          <div class="hero-cta">
-            <button class="btn-orange" onclick="document.querySelector('.music-section').scrollIntoView({ behavior: 'smooth' });">Mulai Mendengarkan</button>
-            <button class="btn-secondary">Upload Lagumu</button>
+    <section class="music-section" id="music-section">
+      <h2>Trending Tracks</h2>
+      <div class="card-grid">
+        
+        <!-- LAGU 1 -->
+        <div class="card"
+             data-src="anxiety.mp3"
+             data-title="ANXIETY x SOMEBODY THAT I USED"
+             data-artist="DARTHA RPPS x SPYNX VVIP"
+             data-cover="https://i1.sndcdn.com/artworks-CaPxXgHOW9m3mMo0-tysnog-original.png">
+           <div class="card-cover">
+             <img src="https://i1.sndcdn.com/artworks-CaPxXgHOW9m3mMo0-tysnog-original.png" alt="Cover">
           </div>
+          <p class="title">ANXIETY x SOMEBODY THAT I USED</p>
+          <p class="subtitle">DARTHA RPPS x SPYNX VVIP</p>
         </div>
-      </section>
 
-      <!-- 2. KATEGORI / GENRE CHIPS -->
-      <section class="genres-section">
-        <div class="genres-grid">
-          <div class="genre-chip">🔥 Trending Now</div>
-          <div class="genre-chip">🎧 DJ Remix</div>
-          <div class="genre-chip">☕ Chill / Lo-Fi</div>
-          <div class="genre-chip">🎤 Pop & EDM</div>
-          <div class="genre-chip">🎷 Jazz & Acoustic</div>
+        <!-- LAGU 2 -->
+        <div class="card" 
+             data-src="eeee a.mp3" 
+             data-title="EEEE A (Edit Pitched Up)" 
+             data-artist="DJ Ocyn"
+             data-cover="https://i1.sndcdn.com/artworks-JskXfUzsyhxHV2rX-6hVEMA-original.png">
+          <div class="card-cover">
+            <img src="https://i1.sndcdn.com/artworks-JskXfUzsyhxHV2rX-6hVEMA-original.png" alt="Cover">
+          </div>
+          <p class="title">EEEE A</p>
+          <p class="subtitle">DJ Ocyn Edit</p>
         </div>
-      </section>
 
-      <!-- 3. BAGIAN DAFTAR MUSIK -->
-      <section class="music-section">
-        <h2>Trending Tracks</h2>
-        <div class="card-grid">
-          
-          <!-- LAGU 1: ANXIETY -->
-          <div class="card"
-               data-src="anxiety.mp3"
-               data-title="ANXIETY x SOMEBODY THAT I USED"
-               data-artist="DARTHA RPPS x SPYNX VVIP"
-               data-cover="https://i1.sndcdn.com/artworks-CaPxXgHOW9m3mMo0-tysnog-original.png">
-             <div class="card-cover">
-               <img src="https://i1.sndcdn.com/artworks-CaPxXgHOW9m3mMo0-tysnog-original.png" alt="ANXIETY Cover">
-            </div>
-            <p class="title">ANXIETY x SOMEBODY THAT I USED</p>
-            <p class="subtitle">DARTHA RPPS x SPYNX VVIP</p>
+        <!-- LAGU 3 -->
+        <div class="card" 
+             data-src="fate of ophelia.mp3" 
+             data-title="Fate Of Ophelia" 
+             data-artist="Rizky Mustafa x KEI x SPYNX"
+             data-cover="https://i1.sndcdn.com/artworks-Ir7xtXx7pkP8hyFy-bw9zoA-t500x500.jpg">
+          <div class="card-cover">
+            <img src="https://i1.sndcdn.com/artworks-Ir7xtXx7pkP8hyFy-bw9zoA-t500x500.jpg" alt="Cover">
           </div>
-
-          <!-- LAGU 2: EEEE A -->
-          <div class="card" 
-               data-src="eeee a.mp3" 
-               data-title="EEEE A (Edit Pitched Up)" 
-               data-artist="DJ Ocyn"
-               data-cover="https://i1.sndcdn.com/artworks-JskXfUzsyhxHV2rX-6hVEMA-original.png">
-            <div class="card-cover">
-              <img src="https://i1.sndcdn.com/artworks-JskXfUzsyhxHV2rX-6hVEMA-original.png" alt="EEEE A Cover">
-            </div>
-            <p class="title">EEEE A</p>
-            <p class="subtitle">DJ Ocyn Edit</p>
-          </div>
-
-          <!-- LAGU 3: FATE OF OPHELIA -->
-          <div class="card" 
-               data-src="fate of ophelia.mp3" 
-               data-title="Fate Of Ophelia" 
-               data-artist="Rizky Mustafa x KEI x SPYNX"
-               data-cover="https://i1.sndcdn.com/artworks-Ir7xtXx7pkP8hyFy-bw9zoA-t500x500.jpg">
-            <div class="card-cover">
-              <img src="https://i1.sndcdn.com/artworks-Ir7xtXx7pkP8hyFy-bw9zoA-t500x500.jpg" alt="Fate Of Ophelia Cover">
-            </div>
-            <p class="title">Fate Of Ophelia</p>
-            <p class="subtitle">Rizky Mustafa x KEI x SPYNX</p>
-          </div>
-
-          <!-- LAGU 4: SPEECHLESS -->
-          <div class="card" 
-               data-src="speechless.mp3" 
-               data-title="Speechless" 
-               data-artist="Febrizkyafi X Rizky"
-               data-cover="https://i1.sndcdn.com/artworks-000581436710-rzd7xh-t500x500.jpg">
-            <div class="card-cover">
-              <img src="https://i1.sndcdn.com/artworks-000581436710-rzd7xh-t500x500.jpg" alt="Speechless Cover">
-            </div>
-            <p class="title">Speechless</p>
-            <p class="subtitle">Febrizkyafi X Rizky</p>
-          </div>
-
+          <p class="title">Fate Of Ophelia</p>
+          <p class="subtitle">Rizky Mustafa x KEI x SPYNX</p>
         </div>
-      </section>
-    </main>
+
+        <!-- LAGU 4 -->
+        <div class="card" 
+             data-src="speechless.mp3" 
+             data-title="Speechless" 
+             data-artist="Febrizkyafi X Rizky"
+             data-cover="https://i1.sndcdn.com/artworks-000581436710-rzd7xh-t500x500.jpg">
+          <div class="card-cover">
+            <img src="https://i1.sndcdn.com/artworks-000581436710-rzd7xh-t500x500.jpg" alt="Cover">
+          </div>
+          <p class="title">Speechless</p>
+          <p class="subtitle">Febrizkyafi X Rizky</p>
+        </div>
+
+      </div>
+    </section>
   </div>
 
   <audio id="global-audio"></audio>
 
-  <!-- PLAYER BAR -->
+  <!-- PLAYER BAR BAWAH -->
   <div class="sc-player-bar">
     <div class="sc-controls">
       <button id="prev-btn" class="sc-btn">⏮</button>
