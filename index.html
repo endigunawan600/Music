@@ -138,14 +138,22 @@
     .card-cover {
       width: 100%;
       aspect-ratio: 1/1;
-      border-radius: 4px;
+      border-radius: 6px;
       margin-bottom: 8px;
-      background-color: #e5533d;
+      background-color: #222;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       transition: transform 0.2s;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .card:hover .card-cover {
@@ -247,12 +255,19 @@
     .mini-cover {
       width: 30px;
       height: 30px;
-      background-color: #e5533d;
+      background-color: #ff5500;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 2px;
       font-size: 14px;
+      overflow: hidden;
+    }
+
+    .mini-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .track-details {
@@ -311,33 +326,36 @@
         <h2>Trending Tracks</h2>
         <div class="card-grid">
           
-          <!-- LAGU DJ OCYN BERHASIL DIHUBUNGKAN LANGSUNG -->
+          <!-- LAGU 1: DJ OCYN - EEEE A (LENGKAP DENGAN GAMBAR COVER SOUNDCLOUD) -->
           <div class="card" 
                data-src="https://api.downloadscloudmp3.com/download?url=https%3A%2F%2Fsoundcloud.com%2Fdjocyn%2Feeee-a-dj-ocyn-edit-pitched-up&format=mp3&title=EEEE%20A%20%28DJ%20Ocyn%20Edit%29%20%5BPITCHED%20UP%5D&exp=1787105669&sig=ee8e2d1d6f20ad5dc5cb326bb063959d9ebf2a345ea2644a48a34be1b5371c24" 
                data-title="EEEE A (Edit Pitched Up)" 
-               data-artist="DJ Ocyn">
-            <div class="card-cover" style="background-color: #ff5500;"><span class="play-icon">▶</span></div>
+               data-artist="DJ Ocyn"
+               data-cover="https://i1.sndcdn.com/artworks-MInpI4Y3C7mO2jO4-RkMytA-t500x500.jpg">
+            <div class="card-cover">
+              <img src="https://i1.sndcdn.com/artworks-MInpI4Y3C7mO2jO4-RkMytA-t500x500.jpg" alt="EEEE A Cover">
+            </div>
             <p class="title">EEEE A</p>
             <p class="subtitle">DJ Ocyn Edit</p>
           </div>
 
           <!-- LAGU SAMPLE 1 -->
           <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" data-title="Trap Vibes" data-artist="Trending Genre">
-            <div class="card-cover"><span class="play-icon">▶</span></div>
+            <div class="card-cover" style="background-color: #e5533d;"><span class="play-icon">▶</span></div>
             <p class="title">Trap</p>
             <p class="subtitle">Trending</p>
           </div>
 
           <!-- LAGU SAMPLE 2 -->
           <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" data-title="Soundcloud Beat" data-artist="Soundcloud Official">
-            <div class="card-cover"><span class="play-icon">▶</span></div>
+            <div class="card-cover" style="background-color: #ff5500;"><span class="play-icon">▶</span></div>
             <p class="title">Soundcloud</p>
             <p class="subtitle">Trending</p>
           </div>
 
           <!-- LAGU SAMPLE 3 -->
           <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" data-title="Hip Hop Chill" data-artist="Lo-Fi Master">
-            <div class="card-cover"><span class="play-icon">▶</span></div>
+            <div class="card-cover" style="background-color: #33b5e5;"><span class="play-icon">▶</span></div>
             <p class="title">Hip Hop</p>
             <p class="subtitle">Trending</p>
           </div>
@@ -366,7 +384,7 @@
     </div>
 
     <div class="sc-track-info">
-      <div class="mini-cover">🎵</div>
+      <div class="mini-cover" id="mini-cover">🎵</div>
       <div class="track-details">
         <span id="track-artist">Pilih Lagu</span>
         <span id="track-title">Belum ada lagu diputar</span>
