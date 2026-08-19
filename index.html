@@ -42,23 +42,22 @@
         <h2>Trending by genre</h2>
         <div class="card-grid">
           
-          <!-- Tambahkan atribut data-src berisi URL audio sampel -->
-          <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" data-title="Trap Song">
+          <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" data-title="Trap Vibes" data-artist="Trending Genre" data-cover="genre-red">
             <div class="card-cover genre-red"><span class="play-icon">▶</span></div>
             <p class="title">Trap</p>
-            <p class="subtitle">Klik untuk Putar</p>
+            <p class="subtitle">Trending</p>
           </div>
 
-          <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" data-title="Soundcloud Beat">
+          <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" data-title="Soundcloud Beat" data-artist="Soundcloud Offical" data-cover="genre-red">
             <div class="card-cover genre-red"><span class="play-icon">▶</span></div>
             <p class="title">Soundcloud</p>
-            <p class="subtitle">Klik untuk Putar</p>
+            <p class="subtitle">Trending</p>
           </div>
 
-          <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" data-title="Hip Hop Vibe">
+          <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" data-title="Hip Hop Chill" data-artist="Lo-Fi Master" data-cover="genre-red">
             <div class="card-cover genre-red"><span class="play-icon">▶</span></div>
             <p class="title">Hip Hop</p>
-            <p class="subtitle">Klik untuk Putar</p>
+            <p class="subtitle">Trending</p>
           </div>
 
         </div>
@@ -66,10 +65,32 @@
     </main>
   </div>
 
-  <!-- PEMUTAR MUSIK MELAYANG DI BAWAH (PLAYER BAR) -->
-  <div class="bottom-player">
-    <span id="now-playing">Pilih lagu untuk memutar</span>
-    <audio id="global-audio" controls></audio>
+  <!-- AUDIO HIDDEN -->
+  <audio id="global-audio"></audio>
+
+  <!-- PLAYER BAR KHAS SOUNDCLOUD -->
+  <div class="sc-player-bar">
+    <div class="sc-controls">
+      <button id="prev-btn" class="sc-btn">⏮</button>
+      <button id="play-btn" class="sc-btn play-main">▶</button>
+      <button id="next-btn" class="sc-btn">⏭</button>
+    </div>
+
+    <div class="sc-progress-container">
+      <span id="current-time">0:00</span>
+      <div class="progress-bar-bg" id="progress-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+      <span id="duration-time">0:00</span>
+    </div>
+
+    <div class="sc-track-info">
+      <div class="mini-cover" id="mini-cover">🎵</div>
+      <div class="track-details">
+        <span id="track-artist">Pilih Lagu</span>
+        <span id="track-title">Belum ada lagu diputar</span>
+      </div>
+    </div>
   </div>
 
   <script src="app.js"></script>
