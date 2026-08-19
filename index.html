@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kucay Music</title>
+  <title>SoundCloud Clone</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
     <div class="nav-left">
       <div class="logo">
         <svg height="22" viewBox="0 0 48 24" fill="#fff"><path d="M12 18h31c2.8 0 5-2.2 5-5s-2.2-5-5-5c-.2 0-.4 0-.6.1C41.6 5 38.6 3 35 3c-4.4 0-8 3.6-8 8 0 .3 0 .7.1 1M0 18h2v-6H0v6zm4 0h2V9H4v9zm4 0h2V7H8v11zm4 0h2V6h-2v12z"/></svg>
-        <span>Kucay Music</span>
+        <span>SOUNDCLOUD</span>
       </div>
       <nav class="nav-links">
         <a href="#" class="active">Home</a>
@@ -33,91 +33,45 @@
     </div>
   </header>
 
-  <!-- KONTEN UTAMA & SIDEBAR -->
+  <!-- KONTEN UTAMA -->
   <div class="main-container">
-    
-    <!-- AREA KONTEN KIRI -->
     <main class="content-area">
       <h1>Discover Tracks and Playlists</h1>
 
-      <!-- SEKSI 1: Trending by genre -->
       <section class="music-section">
         <h2>Trending by genre</h2>
         <div class="card-grid">
-          <div class="card">
-            <div class="card-cover genre-red"></div>
+          
+          <!-- Tambahkan atribut data-src berisi URL audio sampel -->
+          <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" data-title="Trap Song">
+            <div class="card-cover genre-red"><span class="play-icon">▶</span></div>
             <p class="title">Trap</p>
-            <p class="subtitle">Trending</p>
+            <p class="subtitle">Klik untuk Putar</p>
           </div>
-          <div class="card">
-            <div class="card-cover genre-red"></div>
+
+          <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" data-title="Soundcloud Beat">
+            <div class="card-cover genre-red"><span class="play-icon">▶</span></div>
             <p class="title">Soundcloud</p>
-            <p class="subtitle">Trending</p>
+            <p class="subtitle">Klik untuk Putar</p>
           </div>
-          <div class="card">
-            <div class="card-cover genre-red"></div>
+
+          <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" data-title="Hip Hop Vibe">
+            <div class="card-cover genre-red"><span class="play-icon">▶</span></div>
             <p class="title">Hip Hop</p>
-            <p class="subtitle">Trending</p>
+            <p class="subtitle">Klik untuk Putar</p>
           </div>
-          <div class="card">
-            <div class="card-cover genre-pop"></div>
-            <p class="title">Pop</p>
-            <p class="subtitle">Trending</p>
-          </div>
-          <div class="card">
-            <div class="card-cover genre-anime"></div>
-            <p class="title">Electronic</p>
-            <p class="subtitle">Trending</p>
-          </div>
+
         </div>
       </section>
-
-      <!-- SEKSI 2: Artists to watch out for -->
-      <section class="music-section">
-        <h2>Artists to watch out for</h2>
-        <div class="card-grid">
-          <div class="card">
-            <div class="card-cover art-1"></div>
-            <p class="title">Buzzing Mexico</p>
-            <p class="subtitle">New!</p>
-          </div>
-          <div class="card">
-            <div class="card-cover art-2"></div>
-            <p class="title">Buzzing Electronic</p>
-            <p class="subtitle">New!</p>
-          </div>
-          <div class="card">
-            <div class="card-cover art-3"></div>
-            <p class="title">Buzzing Hip Hop & Rap</p>
-            <p class="subtitle">New!</p>
-          </div>
-          <div class="card">
-            <div class="card-cover art-4"></div>
-            <p class="title">Buzzing Pop</p>
-            <p class="subtitle">New!</p>
-          </div>
-        </div>
-      </section>
-
     </main>
-
-    <!-- SIDEBAR KANAN -->
-    <aside class="sidebar">
-      <div class="mobile-apps">
-        <p class="sidebar-title">GO MOBILE</p>
-        <div class="app-buttons">
-          <button class="store-btn">App Store</button>
-          <button class="store-btn">Google Play</button>
-        </div>
-      </div>
-
-      <footer class="footer-links">
-        <p>Legal - Privacy - Cookie Policy - Imprint - Artist Resources - Newsroom - Charts</p>
-        <p class="lang">Language: <span>English (US)</span></p>
-      </footer>
-    </aside>
-
   </div>
 
+  <!-- PEMUTAR MUSIK MELAYANG DI BAWAH (PLAYER BAR) -->
+  <div class="bottom-player">
+    <span id="now-playing">Pilih lagu untuk memutar</span>
+    <audio id="global-audio" controls></audio>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
