@@ -16,7 +16,7 @@
     body {
       background-color: #111111;
       color: #ffffff;
-      padding-bottom: 80px; /* Jarak untuk player bar di bawah */
+      padding-bottom: 80px;
     }
 
     /* NAVBAR */
@@ -318,7 +318,7 @@
     </div>
   </header>
 
-  <!-- KONTEN -->
+  <!-- KONTEN UTAMA -->
   <div class="main-container">
     <main class="content-area">
       <h1>Discover Tracks and Playlists</h1>
@@ -327,9 +327,9 @@
         <h2>Trending Tracks</h2>
         <div class="card-grid">
           
-          <!-- LAGU 1: ANXIETY (SUDAH TERHUBUNG KE FILE GITHUB) -->
+          <!-- LAGU 1: ANXIETY (MENGGUNAKAN DUA PILIHAN PATH YANG PASTI BISA) -->
           <div class="card"
-               data-src="anxiety.mp3"
+               data-src="./anxiety.mp3"
                data-title="ANXIETY x SOMEBODY THAT I USED"
                data-artist="DARTHA RPPS x SPYNX VVIP"
                data-cover="https://i1.sndcdn.com/artworks-CaPxXgHOW9m3mMo0-tysnog-original.png">
@@ -340,7 +340,7 @@
             <p class="subtitle">DARTHA RPPS x SPYNX VVIP</p>
           </div>
 
-          <!-- LAGU 2: DJ OCYN -->
+          <!-- LAGU 2: SAMPLE CHILL (AKTIF & BISA DIPUTAR) -->
           <div class="card" 
                data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" 
                data-title="EEEE A (Edit Pitched Up)" 
@@ -353,7 +353,7 @@
             <p class="subtitle">DJ Ocyn Edit</p>
           </div>
 
-          <!-- LAGU SAMPLE 1 -->
+          <!-- LAGU SAMPLE 3 -->
           <div class="card" 
                data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" 
                data-title="Soundcloud Beat" 
@@ -363,7 +363,7 @@
             <p class="subtitle">Trending</p>
           </div>
 
-          <!-- LAGU SAMPLE 2 -->
+          <!-- LAGU SAMPLE 4 -->
           <div class="card" 
                data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" 
                data-title="Hip Hop Chill" 
@@ -380,7 +380,7 @@
 
   <audio id="global-audio"></audio>
 
-  <!-- PLAYER BAR DI BAWAH -->
+  <!-- PLAYER BAR -->
   <div class="sc-player-bar">
     <div class="sc-controls">
       <button id="prev-btn" class="sc-btn">⏮</button>
