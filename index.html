@@ -114,31 +114,6 @@
       margin-bottom: 25px;
     }
 
-    /* FEATURED SOUNDCLOUD SECTION (DARK STYLED) */
-    .featured-section {
-      background-color: #000000;
-      border: 1px solid #222222;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 35px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    }
-
-    .featured-title {
-      font-size: 14px;
-      color: #ff5500;
-      font-weight: bold;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .featured-section iframe {
-      border-radius: 8px;
-      border: none;
-    }
-
     .music-section {
       margin-bottom: 35px;
     }
@@ -187,11 +162,17 @@
       font-size: 13px;
       font-weight: bold;
       color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .card .subtitle {
       font-size: 12px;
       color: #888;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* PLAYER BAR DI BAWAH */
@@ -326,36 +307,35 @@
     <main class="content-area">
       <h1>Discover Tracks and Playlists</h1>
 
-      <!-- FEATURED TRACK SOUNDCLOUD -->
-      <section class="featured-section">
-        <div class="featured-title">🔥 Featured Track</div>
-        <iframe 
-          width="100%" 
-          height="166" 
-          scrolling="no" 
-          frameborder="no" 
-          allow="autoplay" 
-          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djocyn/eeee-a-dj-ocyn-edit-pitched-up&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-        </iframe>
-      </section>
-
-      <!-- SEMUA LAGU SAMPLE LAMA -->
       <section class="music-section">
-        <h2>Trending by genre</h2>
+        <h2>Trending Tracks</h2>
         <div class="card-grid">
           
+          <!-- LAGU DJ OCYN (DIHUBUNGKAN KE PLAYER BAWAH) -->
+          <div class="card" 
+               data-src="https://api.soundcloud.com/tracks/1183186843/stream?client_id=iZ36Fi8p322S1NVrA3EK8A1PTh99I3Y1" 
+               data-title="EEEE A (Edit Pitched Up)" 
+               data-artist="DJ Ocyn">
+            <div class="card-cover" style="background-color: #ff5500;"><span class="play-icon">▶</span></div>
+            <p class="title">EEEE A</p>
+            <p class="subtitle">DJ Ocyn Edit</p>
+          </div>
+
+          <!-- LAGU SAMPLE 1 -->
           <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" data-title="Trap Vibes" data-artist="Trending Genre">
             <div class="card-cover"><span class="play-icon">▶</span></div>
             <p class="title">Trap</p>
             <p class="subtitle">Trending</p>
           </div>
 
+          <!-- LAGU SAMPLE 2 -->
           <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" data-title="Soundcloud Beat" data-artist="Soundcloud Official">
             <div class="card-cover"><span class="play-icon">▶</span></div>
             <p class="title">Soundcloud</p>
             <p class="subtitle">Trending</p>
           </div>
 
+          <!-- LAGU SAMPLE 3 -->
           <div class="card" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" data-title="Hip Hop Chill" data-artist="Lo-Fi Master">
             <div class="card-cover"><span class="play-icon">▶</span></div>
             <p class="title">Hip Hop</p>
