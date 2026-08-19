@@ -1,33 +1,17 @@
-const audio = document.getElementById('audio');
-const playBtn = document.getElementById('play-btn');
+const cards = document.querySelectorAll('.card');
+const audioPlayer = document.getElementById('global-audio');
+const nowPlayingText = document.getElementById('now-playing');
 
-let isPlaying = false;
+// Tambahkan event listener untuk setiap kartu lagu
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const audioSrc = card.getAttribute('data-src');
+    const songTitle = card.getAttribute('data-title');
 
-// Fungsi untuk memutar lagu
-function playSong() {
-  isPlaying = true;
-  audio.play();
-  playBtn.innerText = 'Pause';
-}
-
-// Fungsi untuk menghentikan lagu sementara
-function pauseSong() {
-  isPlaying = false;
-  audio.pause();
-  playBtn.innerText = 'Play';
-}
-
-// Event listener saat tombol diklik
-playBtn.addEventListener('click', () => {
-  if (isPlaying) {
-    pauseSong();
-  } else {
-    playSong();
-  }
-});
-
-// Otomatis kembalikan tombol ke "Play" jika lagu selesai
-audio.addEventListener('ended', () => {
-  isPlaying = false;
-  playBtn.innerText = 'Play';
+    if (audioSrc) {
+      audioPlayer.src = audioSrc;
+      audioPlayer.play();
+      nowPlayingText.innerText = "Memutar: " + songTitle;
+    }
+  });
 });
