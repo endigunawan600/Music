@@ -1,77 +1,125 @@
-const audio = document.getElementById('global-audio');
-const playBtn = document.getElementById('play-btn');
-const progressBg = document.getElementById('progress-bg');
-const progressFill = document.getElementById('progress-fill');
-const currentTimeEl = document.getElementById('current-time');
-const durationTimeEl = document.getElementById('duration-time');
-const trackTitle = document.getElementById('track-title');
-const trackArtist = document.getElementById('track-artist');
+document.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('global-audio');
+  const playBtn = document.getElementById('play-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const progressBg = document.getElementById('progress-bg');
+  const progressFill = document.getElementById('progress-fill');
+  const currentTimeEl = document.getElementById('current-time');
+  const durationTimeEl = document.getElementById('duration-time');
+  
+  const trackTitle = document.getElementById('track-title');
+  const trackArtist = document.getElementById('track-artist');
+  const miniCover = document.getElementById('mini-cover');
 
-const cards = document.querySelectorAll('.card');
-let isPlaying = false;
+  const cards = Array.from(document.querySelectorAll('.card'));
+  let currentIndex = -1;
 
-// 1. Klik Lagu di Card
-cards.forEach(card => {
-  card.addEventListener('click', () => {
+  // Fungsi untuk memutar lagu berdasarkan indeks kartu
+  function playTrack(index) {
+    if (index < 0 || index >= cards.length) return;
+    
+    currentIndex = index;
+    const card = cards[currentIndex];
+    
     const src = card.getAttribute('data-src');
-    const title = card.getAttribute('data-title');
-    const artist = card.getAttribute('data-artist');
+    const title = card.getAttribute('data-title') || 'Unknown Title';
+    const artist = card.getAttribute('data-artist') || 'Unknown Artist';
+    const cover = card.getAttribute('data-cover');
 
+    // Update Tampilan Player Bar
+    trackTitle.textContent = title;
+    trackArtist.textContent = artist;
+    
+    if (cover) {
+      miniCover.innerHTML = `<img src="${cover}" alt="cover" style="width:100%; height:100%; object-fit:cover;">`;
+    } else {
+      miniCover.innerHTML = '🎵';
+    }
+
+    // Set Audio Source dan Putar
     audio.src = src;
-    trackTitle.innerText = title;
-    trackArtist.innerText = artist;
+    audio.play().then(() => {
+      playBtn.textContent = '⏸';
+    }).catch(err => {
+      console.error("Gagal memutar audio:", err);
+      alert("Gagal memutar audio. Pastikan link audio masih aktif atau tidak diblokir browser.");
+    });
+  }
 
-    playSong();
+  // Event Listener Klik pada setiap Kartu Lagu
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      playTrack(index);
+    });
   });
-});
 
-// 2. Fungsi Play / Pause
-function playSong() {
-  isPlaying = true;
-  audio.play();
-  playBtn.innerText = '⏸';
-}
+  // Tombol Play / Pause Utama
+  playBtn.addEventListener('click', () => {
+    if (!audio.src) {
+      if (cards.length > 0) playTrack(0);
+      return;
+    }
 
-function pauseSong() {
-  isPlaying = false;
-  audio.pause();
-  playBtn.innerText = '▶';
-}
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = '⏸';
+    } else {
+      audio.pause();
+      playBtn.textContent = '▶';
+    }
+  });
 
-playBtn.addEventListener('click', () => {
-  if (isPlaying) {
-    pauseSong();
-  } else {
-    if (audio.src) playSong();
+  // Tombol Next & Prev
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < cards.length - 1) {
+      playTrack(currentIndex + 1);
+    } else {
+      playTrack(0); // Loop kembali ke awal
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      playTrack(currentIndex - 1);
+    }
+  });
+
+  // Update Progress Bar & Waktu
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+      const progressPercent = (audio.currentTime / audio.duration) * 100;
+      progressFill.style.width = `${progressPercent}%`;
+
+      // Format Menit : Detik
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+      durationTimeEl.textContent = formatTime(audio.duration);
+    }
+  });
+
+  // Klik Progress Bar untuk Seek Waktu
+  progressBg.addEventListener('click', (e) => {
+    const width = progressBg.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+
+    if (duration) {
+      audio.currentTime = (clickX / width) * duration;
+    }
+  });
+
+  // Ketika Lagu Selesai
+  audio.addEventListener('ended', () => {
+    if (currentIndex < cards.length - 1) {
+      playTrack(currentIndex + 1);
+    } else {
+      playBtn.textContent = '▶';
+    }
+  });
+
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   }
 });
-
-// 3. Update Progress Bar & Waktu Durasi
-audio.addEventListener('timeupdate', (e) => {
-  const { currentTime, duration } = e.target;
-  if (duration) {
-    const progressPercent = (currentTime / duration) * 100;
-    progressFill.style.width = `${progressPercent}%`;
-
-    // Format Menit:Detik
-    currentTimeEl.innerText = formatTime(currentTime);
-    durationTimeEl.innerText = formatTime(duration);
-  }
-});
-
-// 4. Klik di Progress Bar untuk Menggeser Durasi
-progressBg.addEventListener('click', (e) => {
-  const width = progressBg.clientWidth;
-  const clickX = e.offsetX;
-  const duration = audio.duration;
-
-  if (duration) {
-    audio.currentTime = (clickX / width) * duration;
-  }
-});
-
-function formatTime(time) {
-  const mins = Math.floor(time / 60);
-  const secs = Math.floor(time % 60);
-  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-}
