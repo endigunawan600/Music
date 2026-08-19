@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kucay Cloud</title>
+  <title>Kucay Cloud - Stream Your Favorite Music</title>
   <link rel="stylesheet" href="style.css">
   <style>
     * {
@@ -103,16 +103,93 @@
       font-size: 13px;
     }
 
-    /* LAYOUT UTAMA */
+    /* HERO BANNER (TAMPILAN UTAMA) */
+    .hero-section {
+      background: linear-gradient(135deg, #1e1e1e 0%, #0a0a0a 100%);
+      border-radius: 12px;
+      padding: 40px 30px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #222;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+      background: linear-gradient(45deg, #ff5500, #ff8800);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      color: #aaa;
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-orange {
+      background-color: #ff5500;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-orange:hover {
+      background-color: #e04b00;
+    }
+
+    /* GENRE TAGS / QUICK CATEGORIES */
+    .genres-section {
+      margin-bottom: 30px;
+    }
+
+    .genres-grid {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 5px;
+    }
+
+    .genre-chip {
+      background-color: #222;
+      border: 1px solid #333;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #ccc;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .genre-chip:hover {
+      background-color: #ff5500;
+      color: #fff;
+      border-color: #ff5500;
+    }
+
+    /* LAYOUT UTAMA KONTEN MUSIK */
     .main-container {
       max-width: 1240px;
       margin: 20px auto;
       padding: 0 20px;
-    }
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 25px;
     }
 
     .music-section {
@@ -120,8 +197,8 @@
     }
 
     .music-section h2 {
-      font-size: 18px;
-      color: #ccc;
+      font-size: 20px;
+      color: #fff;
       margin-bottom: 15px;
     }
 
@@ -297,7 +374,7 @@
   <header class="navbar">
     <div class="nav-left">
       <div class="logo">
-        <svg height="22" viewBox="0 0 48 24" fill="#fff"><path d="M12 18h31c2.8 0 5-2.2 5-5s-2.2-5-5-5c-.2 0-.4 0-.6.1C41.6 5 38.6 3 35 3c-4.4 0-8 3.6-8 8 0 .3 0 .7.1 1M0 18h2v-6H0v6zm4 0h2V9H4v9zm4 0h2V7H8v11zm4 0h2V6h-2v12z"/></svg>
+        <svg height="22" viewBox="0 0 48 24" fill="#ff5500"><path d="M12 18h31c2.8 0 5-2.2 5-5s-2.2-5-5-5c-.2 0-.4 0-.6.1C41.6 5 38.6 3 35 3c-4.4 0-8 3.6-8 8 0 .3 0 .7.1 1M0 18h2v-6H0v6zm4 0h2V9H4v9zm4 0h2V7H8v11zm4 0h2V6h-2v12z"/></svg>
         <span>KUCAYCLOUD</span>
       </div>
       <nav class="nav-links">
@@ -321,13 +398,36 @@
   <!-- KONTEN UTAMA -->
   <div class="main-container">
     <main class="content-area">
-      <h1>Discover Tracks and Playlists</h1>
 
+      <!-- 1. HERO BANNER (TAMPILAN UTAMA SEBELUM MUSIK) -->
+      <section class="hero-section">
+        <div class="hero-text">
+          <h1>Connect on KucayCloud</h1>
+          <p>Dengarkan lagu favoritmu, temukan remix trending terbaru, dan nikmati streaming audio berkualitas kapan saja tanpa batas.</p>
+          <div class="hero-cta">
+            <button class="btn-orange" onclick="document.querySelector('.music-section').scrollIntoView({ behavior: 'smooth' });">Mulai Mendengarkan</button>
+            <button class="btn-secondary">Upload Lagumu</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. KATEGORI / GENRE CHIPS -->
+      <section class="genres-section">
+        <div class="genres-grid">
+          <div class="genre-chip">🔥 Trending Now</div>
+          <div class="genre-chip">🎧 DJ Remix</div>
+          <div class="genre-chip">☕ Chill / Lo-Fi</div>
+          <div class="genre-chip">🎤 Pop & EDM</div>
+          <div class="genre-chip">🎷 Jazz & Acoustic</div>
+        </div>
+      </section>
+
+      <!-- 3. BAGIAN DAFTAR MUSIK -->
       <section class="music-section">
         <h2>Trending Tracks</h2>
         <div class="card-grid">
           
-          <!-- LAGU 1: ANXIETY (JALUR FILE LOKAL) -->
+          <!-- LAGU 1: ANXIETY -->
           <div class="card"
                data-src="anxiety.mp3"
                data-title="ANXIETY x SOMEBODY THAT I USED"
@@ -340,7 +440,7 @@
             <p class="subtitle">DARTHA RPPS x SPYNX VVIP</p>
           </div>
 
-          <!-- LAGU 2: SAMPLE CHILL -->
+          <!-- LAGU 2: EEEE A -->
           <div class="card" 
                data-src="eeee a.mp3" 
                data-title="EEEE A (Edit Pitched Up)" 
@@ -353,27 +453,27 @@
             <p class="subtitle">DJ Ocyn Edit</p>
           </div>
 
-          <!-- LAGU 3: SAMPLE CHILL -->
+          <!-- LAGU 3: FATE OF OPHELIA -->
           <div class="card" 
                data-src="fate of ophelia.mp3" 
                data-title="Fate Of Ophelia" 
                data-artist="Rizky Mustafa x KEI x SPYNX"
                data-cover="https://i1.sndcdn.com/artworks-Ir7xtXx7pkP8hyFy-bw9zoA-t500x500.jpg">
             <div class="card-cover">
-              <img src="https://i1.sndcdn.com/artworks-Ir7xtXx7pkP8hyFy-bw9zoA-t500x500.jpg" alt="KEI">
+              <img src="https://i1.sndcdn.com/artworks-Ir7xtXx7pkP8hyFy-bw9zoA-t500x500.jpg" alt="Fate Of Ophelia Cover">
             </div>
             <p class="title">Fate Of Ophelia</p>
             <p class="subtitle">Rizky Mustafa x KEI x SPYNX</p>
           </div>
 
-          <!-- LAGU 4: SAMPLE CHILL -->
+          <!-- LAGU 4: SPEECHLESS -->
           <div class="card" 
                data-src="speechless.mp3" 
                data-title="Speechless" 
                data-artist="Febrizkyafi X Rizky"
                data-cover="https://i1.sndcdn.com/artworks-000581436710-rzd7xh-t500x500.jpg">
             <div class="card-cover">
-              <img src="https://i1.sndcdn.com/artworks-000581436710-rzd7xh-t500x500.jpg" alt="KEI">
+              <img src="https://i1.sndcdn.com/artworks-000581436710-rzd7xh-t500x500.jpg" alt="Speechless Cover">
             </div>
             <p class="title">Speechless</p>
             <p class="subtitle">Febrizkyafi X Rizky</p>
